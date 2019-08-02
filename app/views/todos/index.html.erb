@@ -1,0 +1,25 @@
+<h1>Задачи</h1><br>
+
+<% Project.find_each do |project| %>
+  <h2><%= project.title %></h2>
+  <% @todos.each do |todo| %>
+    <% if todo.project_id == project.id %>
+      <li><%= todo.text %></li>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= image_tag('addTodoIcon.png', class: 'addTodoIcon') %>
+
+<div class="todo_div" style="display: none;">
+  <h2>НОВАЯ ЗАДАЧА</h2>
+  <%= form_with(model: @todo, url: todos_path, id:'todo_form') do |form| %>
+
+  	<p><%= form.text_field :text %></p>
+    <%= hidden_field_tag 'isCompleted', 'false' %>
+  	<p><%= select_tag 'project_id', options_from_collection_for_select(@project, 'id', 'title'), prompt: 'Выберите категорию' %></p>
+    <%= link_to "OK", @todo, id: "ok_link" %>
+    <%= link_to "CANCEL", @todo, id: "cancel_link" %>
+
+  <% end %>
+</div>
