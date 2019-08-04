@@ -1,0 +1,159 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require select2
+ */
+
+ @font-face {
+
+    font-family: 'OpenSans-Light';
+    src: url('OpenSans-Light.ttf');
+
+    font-family: 'OpenSans-Regular';
+    src: url('OpenSans-Regular.ttf');
+
+    font-family: 'OpenSans-Semibold';
+    src: url('OpenSans-Semibold.ttf');
+
+   font-weight: normal;
+   font-style: normal;
+ }
+
+ body {
+ 	background-color: white;
+ 	font-family: 'OpenSans-Regular';
+   margin: 0;
+ 	position: relative;
+ }
+
+ #mask {
+ 	position: fixed;
+ 	filter: brightness(50%);
+ 	background-color: rgba(.5, .5, .5, .5);
+     height:100%;
+     width:100%;
+     top:0;
+     left:0;
+ }
+
+ #TopDiv {
+     color: white;
+     display: flex;
+     height: 4em;
+     position: relative;
+     display: flex;
+     background-color: #00BFFF;
+ }
+
+ #TopDiv h1 {
+     margin: auto;
+     line-height: 51px;
+     vertical-align: middle;
+     color: white;
+ }
+
+ #TopDiv .addTodoIcon {
+     float: right;
+     position: absolute;
+     left: 97%;
+     top: 50%;
+     transform: translate(-50%, -50%);
+ }
+
+ .tl {
+ 	text-decoration: line-through;
+ }
+
+ #todo_card {
+   -webkit-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+   -moz-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+   box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+   width: 350px;
+   float: left;
+   margin: 2em;
+ }
+
+ #todo_card li {
+   list-style-type: none;
+   margin: 10px auto;
+   padding-left: 15px;
+ 	padding-bottom: 10px;
+   line-height: 20px;
+   word-wrap: break-word;
+ }
+
+ #todo_card ul {
+ 	padding: 0;
+ 	margin: 20px;
+ 	margin-right: 20px;
+ }
+
+ #todo_card h2 {
+ 	margin-left: 20px;
+ }
+
+ #todo_card li div {
+ 	margin-right: 10px;
+ }
+
+ #cn {
+   position: relative;
+   width: 500px;
+   height: 500px;
+ }
+
+ #inner {
+   position: absolute;
+   top: 50%; left: 50%;
+   transform: translate(-50%,-50%);
+   width: 200px;
+   height: 200px;
+ }
+
+ .todo_div {
+ 	background-color: white;
+ 	border: 2px;
+ 	text-align: center;
+ 	position: fixed;
+ 	top: 50%;
+ 	left: 50%;
+ 	transform: translate(-50%, -50%);
+ 	width: 400px;
+ 	height: 250px;
+ }
+
+ input[type=text], select {
+   width: 90%;
+   padding: 12px 20px;
+   display: inline-block;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+   box-sizing: border-box;
+ }
+
+ .todo_div a#cancel_link{
+ 	text-decoration: none;
+ 	text-transform: uppercase;
+ 	background-color: grey;
+ 	padding: 0.5em 1.5em;
+ 	color: white;
+ }
+
+ .todo_div a#ok_link{
+ 	text-decoration: none;
+ 	text-transform: uppercase;
+ 	background-color: deepskyblue;
+ 	padding: 0.5em 1.5em;
+ 	color: white;
+ }
