@@ -1,23 +1,44 @@
-<h1>Задачи</h1><br>
+<div class="content">
 
-<% Project.find_each do |project| %>
-  <h2><%= project.title %></h2>
-  <% @todos.each do |todo| %>
-    <% if todo.project_id == project.id %>
-      <li><%= todo.text %></li>
-    <% end %>
-  <% end %>
-<% end %>
+  <div id="TopDiv">
+    <h1>Задачи</h1><br>
+    <%= image_tag('addTodoIcon.png', class: 'addTodoIcon') %>
+  </div>
 
-<%= image_tag('addTodoIcon.png', class: 'addTodoIcon') %>
+  <div class="container">
+    <div class="row">
+      <% @project.each do |project| %>
+        <div class="col-lg-4 col-md-6 col-12">
+          <div id="todo_card">
+            <h2><%= project.title %></h2>
+            <hr>
+            <ul>
+            <% @todos.each do |todo| %>
+              <% if todo.project_id == project.id %>
+                <li class="<%= 'tl' if todo.isCompleted %>">
+                  <%= form_with(url: "update_todo", method: "put") do %>
+                    <%= hidden_field_tag 'todo_id', todo.id %>
+                    <%= check_box_tag 'isCompleted', 1, todo.isCompleted %>
+                    <%= todo.text %>
+                  <% end %>
+                </li>
+              <% end %>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <div class="todo_div" style="display: none;">
   <h2>НОВАЯ ЗАДАЧА</h2>
   <%= form_with(model: @todo, url: todos_path, id:'todo_form') do |form| %>
 
-  	<p><%= form.text_field :text %></p>
+    <p><%= form.text_field :text %></p>
     <%= hidden_field_tag 'isCompleted', 'false' %>
-  	<p><%= select_tag 'project_id', options_from_collection_for_select(@project, 'id', 'title'), prompt: 'Выберите категорию' %></p>
+    <p><%= select_tag 'project_id', options_from_collection_for_select(@project, 'id', 'title'), prompt: 'Выберите категорию' %></p>
     <%= link_to "OK", @todo, id: "ok_link" %>
     <%= link_to "CANCEL", @todo, id: "cancel_link" %>
 

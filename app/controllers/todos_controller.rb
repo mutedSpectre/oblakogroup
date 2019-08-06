@@ -5,6 +5,7 @@ class TodosController < ApplicationController
   end
 
   def update
+    Todo.update(params[:todo_id], :isCompleted => !params[:isCompleted])
   end
 
   def create
