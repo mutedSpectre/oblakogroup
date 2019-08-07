@@ -1,7 +1,9 @@
 class TodosController < ApplicationController
   def index
-    @project = Project.all
     @todos = Todo.all().order('id ASC')
+    respond_to do |format|
+      format.json {render :json => @todos}
+    end
   end
 
   def update
